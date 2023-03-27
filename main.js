@@ -1,7 +1,8 @@
 const gameStatus = {
     poused: false,
     score: 0,
-    over: false
+    over: false,
+    victory: false
 }
 
 const platformData = {
@@ -102,6 +103,7 @@ const updateSocre = () => {
     const scoreContent = document.querySelector('.score')
     gameStatus.score += 5
     scoreContent.innerHTML = gameStatus.score
+    if(gameStatus.score == 200) gameStatus.victory = true
 }
 
 const updateBallPosition = () => {
@@ -162,7 +164,6 @@ const updateBallPosition = () => {
     }
 
     if(ball.offsetTop + ball.offsetHeight >= grid.offsetHeight + grid.offsetTop) gameStatus.over = true
-
 
     switch (ballData.direction) {
         case 'DR':
