@@ -235,7 +235,22 @@ const verifyBorderColisionPlatform = () => {
     }
 }
 
-function loop() {
+const getInitialPosition = () => {
+    const max = grid.offsetLeft + grid.offsetHeight - 10
+    const min = grid.offsetLeft + 10
+    const initialPositionX = Math.floor(Math.random() * (max - min) + min)
+    const initialDirection = Math.floor(Math.random() * 2)
+
+    if(initialDirection == 1) {
+        ballData.direction = 'DL'
+    } else if(initialDirection == 0) {
+        ballData.direction = 'DR'
+    }
+
+    ballData.positionX = initialPositionX
+}
+
+const loop = () => {
     updatePlatformPosition()
     
     verifyBorderColisionPlatform()
@@ -249,6 +264,7 @@ window.onload = () => {
 
     verifyKeyPressed().getKey()
     createBoxes()
+    getInitialPosition()
 
     document.querySelector('.play-again-btt').addEventListener('click', () => {
         location.reload()
