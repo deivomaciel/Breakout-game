@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #000;
+}
+
+.grid {
+    width: 570px;
+    height: 570px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    border: 1px solid white;
+}
+
+.grid div {
+    width: 56px;
+    height: 24px;
+    border: 2px solid #000;
+    background: rgb(204, 66, 72);
+}
+
+.grid div:nth-child(n+11) {
+    margin-top: -135px;
+    background: rgb(205, 166, 9);
+}
+
+.grid div:nth-child(n+21) {
+    margin-top: -245px;
+    background: rgb(55, 58, 209);
+}
+
+.grid div:nth-child(n+31) {
+    margin-top: -355px;
+    background: rgb(5, 182, 184);
+}
+
+.platform {
+    width: 120px;
+    height: 24px;
+    position: absolute;
+    border: 3px solid #fafafa;
+    bottom: 64px;
+    background: rgb(107, 117, 117);
+}
+
+.ball {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    border-radius: 60%;
+    background: #fafafa;
+}
+
+.game-over-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    background: rgba(000, 000, 000, .5);
+}
+
+.pop-up {
+    min-width: 270px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16pt;
+    color: white;
+    animation-name: fall;
+    animation-duration: 1s;
+    background: #3E434A;
+}
+
+@keyframes fall {
+    from {
+        margin-top: -100px;
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+.game-over-text {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.btt {
+    min-width: 165px;
+    height: 50px;
+    padding: 16px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #009afe;
+    transition: background .3s;
+}
+
+.share-btt {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #350095;
+}
+
+.share-btt span {
+    margin-left: 8px;
+}
+
+.play-again-btt:hover {
+    background: #1C695E;
+}
+
+.score-content {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+
