@@ -23,7 +23,6 @@ const ball = document.querySelector('.ball')
 
 const createBoxes = () => {
     const quantityOfBoxes = 40
-    
     for(let i = 0; i < quantityOfBoxes; i++) {
         let box = document.createElement('div')
         grid.appendChild(box)
@@ -92,18 +91,18 @@ const verifyBlockColision = () => {
     } 
 }
 
-const removeBlocks = block => {
-    const blocksToRevmove = document.querySelectorAll('.grid div')
-    blocksToRevmove[block].style.background = '#000'
-    blocksToRevmove[block].classList.add('removed')
-    updateSocre()
-}
-
 const updateSocre = () => {
     const scoreContent = document.querySelector('.score')
     gameStatus.score += 5
     scoreContent.innerHTML = gameStatus.score
     if(gameStatus.score == 200) gameStatus.victory = true
+}
+
+const removeBlocks = block => {
+    const blocksToRevmove = document.querySelectorAll('.grid div')
+    blocksToRevmove[block].style.background = '#000'
+    blocksToRevmove[block].classList.add('removed')
+    updateSocre()
 }
 
 const updateBallPosition = () => {
@@ -112,14 +111,11 @@ const updateBallPosition = () => {
         switch (ballData.direction) {
             case 'UL':
                 ballData.direction = 'UR'
-                break;
+                break
 
             case 'DL':
                 ballData.direction = 'DR'
-                break;
-        
-            default:
-                break;
+                break
         }
     }
 
@@ -128,14 +124,11 @@ const updateBallPosition = () => {
         switch (ballData.direction) {
             case 'DR':
                 ballData.direction = 'DL'
-                break;
+                break
 
             case 'UR':
                 ballData.direction = 'UL'
-                break;
-        
-            default:
-                break;
+                break
         }
     }
 
@@ -145,14 +138,11 @@ const updateBallPosition = () => {
             switch (ballData.direction) {
                 case 'DR':
                     ballData.direction = 'UR'
-                    break;
+                    break
     
                 case 'DL':
                     ballData.direction = 'UL'
-                    break;
-            
-                default:
-                    break;
+                    break
             }
         }
     }
@@ -171,31 +161,28 @@ const updateBallPosition = () => {
             ballData.positionY += ballData.speed
             ball.style.left = ballData.positionX + 'px'
             ball.style.top = ballData.positionY + 'px'
-            break;
+            break
 
         case 'UR':
             ballData.positionX += ballData.speed
             ballData.positionY -= ballData.speed
             ball.style.left = ballData.positionX + 'px'
             ball.style.top = ballData.positionY + 'px'
-            break;
+            break
 
         case 'DL':
             ballData.positionX -= ballData.speed
             ballData.positionY += ballData.speed
             ball.style.left = ballData.positionX + 'px'
             ball.style.top = ballData.positionY + 'px'
-            break;
+            break
     
         case 'UL':
             ballData.positionX -= ballData.speed
             ballData.positionY -= ballData.speed
             ball.style.left = ballData.positionX + 'px'
             ball.style.top = ballData.positionY + 'px'
-            break;
-        
-        default:
-            break;
+            break
     }
     verifyBlockColision()
 }
@@ -253,7 +240,6 @@ const getInitialPosition = () => {
 
 const loop = () => {
     updatePlatformPosition()
-    
     verifyBorderColisionPlatform()
     requestAnimationFrame(loop)
 }
