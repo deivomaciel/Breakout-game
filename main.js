@@ -106,6 +106,8 @@ const removeBlocks = block => {
 }
 
 const updateBallPosition = () => {
+    const ballRight = ball.offsetLeft + ball.offsetWidth
+
     // Esquerda 
     if(ball.offsetLeft <= grid.offsetLeft) {
         switch (ballData.direction) {
@@ -133,8 +135,8 @@ const updateBallPosition = () => {
     }
 
     // Plataforma
-    if(ball.offsetTop + ball.offsetHeight >= platform.offsetTop) {
-        if(ball.offsetLeft >= platform.offsetLeft && ball.offsetLeft + ball.offsetWidth <= platform.offsetLeft + platform.offsetWidth) {
+    if(ball.offsetTop + ball.offsetHeight >= platform.offsetTop && ball.offsetTop <= platform.offsetTop) {
+        if(ball.offsetLeft >= platform.offsetLeft && ballRight <= platform.offsetLeft + platform.offsetWidth) {
             switch (ballData.direction) {
                 case 'DR':
                     ballData.direction = 'UR'
